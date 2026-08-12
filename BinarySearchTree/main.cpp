@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 using namespace std;
 struct Node{
     int data;
@@ -66,4 +67,55 @@ void themNode(Node *&root , const int &x)
    }else{
     p->r=N;
    }
+}
+void duyetLNR(Node* root)
+{
+    // Tang Dan
+  stack <Node*> s;
+  Node *p=root;
+  while(p!=NULL || !s.empty())
+  {
+    while(p!=NULL)
+  {
+    s.push(p);
+    p=p->l;
+  }
+
+  p=s.top();
+  s.pop() ;
+  cout << p->data << " ";
+
+  p=p->r;
+  }
+}
+Node *searchDeQuy(Node *root, const int &x)
+{
+    if(isEmpty(root))
+    return NULL;
+    if(x==root->data) return root;
+
+    if(x>root->data)
+    return searchDeQuy(root->r,x) ;
+
+    if(x<root->data)
+    return searchDeQuy(root->l,x);
+
+    return NULL;
+}
+int main() 
+{
+    Node *root;
+    init(root);
+    themNode(root,110);
+    themNode(root,12);
+    themNode(root,10);
+    themNode(root,140);
+
+    duyetLNR(root);
+    Node *res=searchDeQuy(root,110);
+    if(res!=NULL)
+    cout << res->data;
+    else
+    cout << "Tim Khong Thay";
+    return 0;
 }
