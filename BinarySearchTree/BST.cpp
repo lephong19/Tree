@@ -112,9 +112,9 @@ int main()
     themNode(root,140);
 
     duyetLNR(root);
-    Node *res=searchDeQuy(root,110);
+    Node *res=searchDeQuy(root,140);
     if(res!=NULL)
-    cout << res->data;
+    cout << "Tim Thay: " << res->data;
     else
     cout << "Tim Khong Thay";
     return 0;
