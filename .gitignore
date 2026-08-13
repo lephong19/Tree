@@ -1,0 +1,12 @@
+# File thực thi
+*.exe
+
+# File object
+*.o
+*.obj
+
+# File tạm
+*.tmp
+
+# VS Code
+.vscode/
