@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 using namespace std ;
 struct Node{
     Node *left , *right;
@@ -8,6 +9,10 @@ struct Node{
 bool isEmpty(Node *root)
 {
     return root==NULL;
+}
+void init(Node *&root)
+{
+    root=NULL;
 }
 Node *createNode(const int &x) 
 {
@@ -92,4 +97,34 @@ void addTree(Node *&root, const int &x )
         xoayPhai(root->right);
         xoayTrai(root);
     }
+}
+void duyetLNR(Node *root)
+{
+    stack<Node*>s ;
+    Node *p=root;
+    while(p!=NULL || !s.empty())
+    {
+        while(p!=NULL)
+        {
+            s.push(p);
+            p=p->left;
+        }
+
+        p=s.top();
+        s.pop();
+        cout << p->data << " " ;
+        p=p->right;
+    }
+}
+int main()
+{
+    Node *root;
+    init(root);
+    addTree(root,10);
+    addTree(root,30);
+    addTree(root,120);
+    addTree(root,100);
+    duyetLNR(root);
+    addTree()
+    return 0;
 }
